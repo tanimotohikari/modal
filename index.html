@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>modal</title>
+</head>
+<script>
+  window.onload = function() {
+    const btn = document.getElementById('js-modal-open');
+    const modal = document.getElementById('js-modal-content');
+
+    function showModal() {
+      modal.classList.remove('hide');
+      modal.classList.add('show');
+    }
+
+    function closeModal() {
+      modal.classList.remove('show');
+      modal.classList.add('hide');
+    }
+
+    btn.addEventListener('click', showModal);
+    modal.addEventListener('click', closeModal);
+
+  }
+</script>
+<style>
+.btn {
+  width: 150px;
+  font-size:18px;
+  color: #555;
+  background-color: #fff;
+  border: solid 3px #555;
+  cursor: pointer;
+  text-align: center;
+}
+.modal {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .7);
+  display: none;
+  position: fixed;
+  top: 0;
+}
+
+.modal-content-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -25px;
+  margin-left: -100px;
+  width: 200px;
+  height: 50px;
+  background-color: #fff;
+}
+
+.show {
+  display: block;
+  animation: fadeIn .5s;
+}
+
+.hide {
+  display: none;
+  animation: fadeOut .5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+</style>
+<body>
+  <p id='js-modal-open' class='btn'>modal open</p>
+  <div id='js-modal-content' class='modal'>
+    <p class='modal-content-text'>modalのコンテンツです</p>
+  </div>
+</body>
+</html>
